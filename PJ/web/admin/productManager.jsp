@@ -14,6 +14,9 @@
             <jsp:include page="template/sidebar.jsp"/>
             <div class="container mt-5">
                 <h3>Product management page</h3>
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger">${error}</div>
+                </c:if>
                 <br>
                 <div class="container">
                     <form id="search" action="product-manager" method="get" class="row">
@@ -32,7 +35,7 @@
                             <select class="form-select" name="brandSelect" id="brandSelect" onchange="onChangeSubmit('search')">
                                 <option ${currentBrand == 0 ? 'selected' : ''} value="0">All brand</option>
                                 <c:forEach items="${brandList}" var="b">
-                                    <option  ${currentBrand == b.id ? 'selected' : ''} value="${b.id}">${b.brandName}</option>
+                                    <option ${currentBrand == b.id ? 'selected' : ''} value="${b.id}">${b.brandName}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -52,7 +55,7 @@
                             </select>
                         </div>
                     </form>
-                    <br><!-- comment -->
+                    <br>
 
                     <table class="table table-light">
                         <thead>
@@ -78,7 +81,7 @@
                                     <td>
                                         <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                                 data-bs-target="#detailsModal${p.id}">Detail</button>
-                                        <button  data-bs-toggle="modal" data-bs-target="#editModal${p.id}" class="btn btn-primary">Update</button>
+                                        <button data-bs-toggle="modal" data-bs-target="#editModal${p.id}" class="btn btn-primary">Update</button>
                                         <jsp:include page="template/editOtherProductModal.jsp">
                                             <jsp:param name="id" value="${p.id}" />
                                             <jsp:param name="productName" value="${p.productName}" />
@@ -92,41 +95,35 @@
 
                                         <form onsubmit="deleteAlert(event)" style="display:inline-block" method="post" action="product-manager">
                                             <input name="delete" type="hidden" value="${p.id}"/>
-                                            <button type="submit" class ="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
-
                                     </td>
                                 </tr>
-                                <!-- Modal chi tiết sản phẩm -->
-                                <!-- Modal -->
                             <div class="modal fade" id="detailsModal${p.id}" tabindex="-1"
                                  aria-labelledby="detailsModalLabel${p.id}" aria-hidden="true">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="detailsModalLabel${p.id}">Product detail</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Clcpue"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-6"><img src="${p.image}" width="500" height="500" alt="alt" /></div>
-                                                <div class="col-md-6">        
-                                                        <p><strong>Product id: </strong>${p.id}</p>
-                                                        <p><strong>Product name: </strong>${p.productName}</p>
-                                                        <p><strong>Brand: </strong>${p.brand.brandName}</p>
-                                                        <p><strong>Description: </strong>${p.generalInfo}</p>
-                                                        <p><strong>Warranty: </strong>${p.warrantyInfo}</p>
-                                                        <p><strong>Price: </strong> <span class="price">${p.price}</span></p>
-                                                        <p><strong>Depot: </strong>${p.stockUnits}</p>
-                                                        <p><strong>Sold: </strong>${p.unitsSold}</p>
-                                             
+                                                <div class="col-md-6">
+                                                    <p><strong>Product id: </strong>${p.id}</p>
+                                                    <p><strong>Product name: </strong>${p.productName}</p>
+                                                    <p><strong>Brand: </strong>${p.brand.brandName}</p>
+                                                    <p><strong>Description: </strong>${p.generalInfo}</p>
+                                                    <p><strong>Warranty: </strong>${p.warrantyInfo}</p>
+                                                    <p><strong>Price: </strong><span class="price">${p.price}</span></p>
+                                                    <p><strong>Depot: </strong>${p.stockUnits}</p>
+                                                    <p><strong>Sold: </strong>${p.unitsSold}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -135,23 +132,18 @@
                         </tbody>
                     </table>
 
-                    <!-- Thêm mới những sản phẩm khác -->
                     <jsp:include page="template/addOtherProductModal.jsp"/>
 
-                    <!-- Làm phân trang -->
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center">
                             <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                                <a class="page-link" href="?page=${currentPage - 1}&brandSelect=${currentBrand}&categorySelect=${currentCategory}&priceRange=${currentPriceRange}" 
-                                   tabindex="-1">Previous</a>
+                                <a class="page-link" href="?page=${currentPage - 1}&brandSelect=${currentBrand}&categorySelect=${currentCategory}&priceRange=${currentPriceRange}" tabindex="-1">Previous</a>
                             </li>
-
                             <c:forEach var="i" begin="1" end="${totalPages}">
                                 <li class="page-item ${i == currentPage ? 'active' : ''}">
                                     <a class="page-link" href="?page=${i}&brandSelect=${currentBrand}&categorySelect=${currentCategory}&priceRange=${currentPriceRange}">${i}</a>
                                 </li>
                             </c:forEach>
-
                             <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
                                 <a class="page-link" href="?page=${currentPage + 1}&brandSelect=${currentBrand}&categorySelect=${currentCategory}&priceRange=${currentPriceRange}">Next</a>
                             </li>
@@ -165,5 +157,4 @@
         <script src="resources/script/jquery-3.7.1.min.js"></script>
         <script src="resources/script/script.js"></script>
     </body>
-
 </html>
