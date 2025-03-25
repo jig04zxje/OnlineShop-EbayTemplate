@@ -12,10 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/FA24/PJ/web/user/advancedSearch.jsp</file>
-            <file>file:/E:/FA24/PJ/web/user/include/header.jsp</file>
-            <file>file:/E:/FA24/PJ/web/user/include/carousel.jsp</file>
-            <file>file:/E:/FA24/PJ/web/user/home.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/admin/accountManager.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/admin/template/sidebar.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/admin/adminManager.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/user/home.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/admin/categoryManager.jsp</file>
+            <file>file:/E:/SPRING25/SWP391/PRJ301-project/OnlineShop-EbayTemplate/PJ/web/user/include/header.jsp</file>
         </group>
     </open-files>
 </project-private>

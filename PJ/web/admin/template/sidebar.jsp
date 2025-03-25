@@ -67,7 +67,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="./category-manager" class="nav-link ${pageName == 'category-manager' ? 'active' : 'text-black'}">
+                <a href="./category-manager" id="access-category-manager" class="nav-link ${pageName == 'category-manager' ? 'active' : 'text-black'}">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#category"/></svg>
                     Category Management
                 </a>
@@ -81,7 +81,7 @@
 
 
             <li>
-                <a href="./account-manager" class="nav-link ${pageName == 'account-manager' ? 'active' : 'text-black'}">
+                <a href="./account-manager" id="access-account-manager" class="nav-link ${pageName == 'account-manager' ? 'active' : 'text-black'}">
                     <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
                     Account Management
                 </a>

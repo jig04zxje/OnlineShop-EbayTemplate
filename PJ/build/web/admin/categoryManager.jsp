@@ -79,7 +79,7 @@
                     </table>
 
                     <div  class="container mt-3">
-                        <button data-bs-toggle="modal" data-bs-target="#addCategoryModal" type="button" class="btn btn-success">Add new category</button>
+                        <button data-bs-toggle="modal" data-bs-target="#addCategoryModal" id="addnew"type="button" class="btn btn-success">Add new category</button>
                     </div>
 
                     <!-- Modal thêm mới danh mục -->
@@ -97,12 +97,12 @@
                                         <label class="form-label" for="categoryName">Category name
                                         </label>
                                         <input name="categoryName"
-                                               class="form-control" type="text" id="categoryName">
+                                               class="form-control" type="text" id="addcategoryName">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Add new</button>
+                                        <button type="submit" id="submit-add" class="btn btn-primary">Add new</button>
                                     </div>
                                 </form>
                             </div>

@@ -18,23 +18,23 @@
     <div class="">
         <ul class="flex space-x-4">
             <c:if test="${sessionScope.user == null}">
-                <li>Hi!<a href="login" class="underline text-blue-500"> Sign in</a> or 
+                <li>Hi!<a href="login" id="login" class="underline text-blue-500"> Sign in</a> or 
                     <a href="register" class="underline text-blue-500">register</a>
                 </li>
             </c:if>
             <c:if test="${sessionScope.user != null}">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hi! ${user.fullName}</a>
+                        <a class="dropdown-toggle" id="click-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hi! ${user.fullName}</a>
                         <ul class="dropdown-menu">
                             <c:if test="${user.role.roleName == 'Admin'}">
-                                <li class="nav-item"><a href="./admin-manager" class="dropdown-item">Admin manager</a></li>
+                                <li class="nav-item"><a href="./admin-manager" id="access" class="dropdown-item">Admin manager</a></li>
                                 </c:if>
                                 <c:if test="${user.role.roleName == 'Customer'}">
-                                <li><a class="dropdown-item" href="./user-account">Account setting</a></li>
+                                <li><a class="dropdown-item" id="access" href="./user-account">Account setting</a></li>
                                 </c:if>
                                 <c:if test="${user.role.roleName == 'Shipper'}">
-                                <li><a class="dropdown-item" href="./shipper-manager">Shipment</a></li>
+                                <li><a class="dropdown-item" id="access" href="./shipper-manager">Shipment</a></li>
                                 </c:if>
                             <li><a class="dropdown-item" href ="logout">Sign out</a></li>
                         </ul>

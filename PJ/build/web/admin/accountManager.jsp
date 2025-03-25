@@ -84,7 +84,7 @@
                     </table>
                     <br>
 
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                    <button type="button" id="addnew" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
                         Add new user
                     </button>
 
@@ -126,7 +126,7 @@
                                         <label class="form-label" for="chooseRoleID">Select Role</label>
                                         <select class="form-select" name="chooseRoleID" id="chooseRoleID">
                                             <c:forEach items="${roleList}" var="role">
-                                                <option value="${role.id}">${role.roleName}</option>
+                                                <option value="${role.id}" id="${role.id}">${role.roleName}</option>
                                             </c:forEach>
                                         </select>
                                         <p id="error-message" style="color: red;"></p>
@@ -134,7 +134,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Add </button>
+                                        <button type="submit" id="submit-add" class="btn btn-primary">Add </button>
                                     </div>
 
                                 </div>

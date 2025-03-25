@@ -202,7 +202,7 @@ public class ProductDAO extends DBContext {
         return count;
     }
 
-    public void addProduct(String productName, int brandId, int categoryId, int price, String generalInfo, String warrantyInfo, int stockUnits, String image) {
+    public boolean addProduct(String productName, int brandId, int categoryId, int price, String generalInfo, String warrantyInfo, int stockUnits, String image) {
         String sql = """
                  INSERT INTO [dbo].[product]
                             ([price]
@@ -220,7 +220,7 @@ public class ProductDAO extends DBContext {
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, price);
-            st.setInt(2, 0);  // units_sold = 0
+            st.setInt(2, 0);  
             st.setInt(3, stockUnits);
             st.setString(4, productName);
             st.setString(5, warrantyInfo);
@@ -228,10 +228,14 @@ public class ProductDAO extends DBContext {
             st.setInt(7, categoryId);
             st.setInt(8, brandId);
             st.setString(9, image);
-            st.executeUpdate();
+            int i = st.executeUpdate();
+            if (i > 0) {
+                return true;
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return false;
     }
 
     public void deleteProduct(int productId) {

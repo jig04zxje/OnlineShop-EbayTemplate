@@ -34,7 +34,7 @@
                     py-2 px-4 mb-3 focus:outline-none focus:border-blue-500"
                            id="password" placeholder="Password" required>
                     <p id="error-message" style="color:red;"></p>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" id="submit-login" class="btn btn-primary w-100">Login</button>
                 <div class="flex items-center mt-3 justify-center">
                     <input type="checkbox" class="mr-2" id="rememberMe">
                     <label name="rememberMe" class="form-check-label text-sm text-gray-600" for="rememberMe">Stay signed in</label>
